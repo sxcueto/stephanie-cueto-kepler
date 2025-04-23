@@ -32,18 +32,26 @@ p{
 
 /* exp section */
 
-li{
-    list-style: none;
-    color: #405c4d ;
+    /* color: #405c4d */
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
 }
-#exp ul {
-    width: 400px;
+.col{
+flex-grow: 1 0 45%;
+width: 50%;
 }
 
-#exp li{
-    padding: 10px;
-    font-size: 15px;
+.row{
+    flex-basis: 100%;
+    width: 25%;
 }
+
+
+
 
 
 /* connect section */

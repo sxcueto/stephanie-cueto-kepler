@@ -4,43 +4,87 @@
     <title>Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
+    <nav> 
+<!-- links to different sections of page-->
+ <a href="#about">About</a>
+ <a href="#exp">Experience</a>
+ <a href="#skills">Skills</a>
+ <a href="#projects">Projects</a>
+ <a href="#connect">Connect</a>
+    </nav>
+
+
     <h1>Stephanie Cueto</h1>
 
+    <div id="all-sections">
+
+        <div class="container">
     <section id="about">
+
     <h2>About</h2>
     <p>
         Web development student studying at Code the Dream. Based in Southwest Ohio and currently working as a pet sitter. When I'm not working or studying, you can find me jamming at a concert or doing arts & crafts with my friends.
     </p>
 </section>
-
+</div>
+<!-- In your index.css file, change the layout of your "Experience" section using rows and columns so items are displayed in a better layout rather than a list Hint: use Flexbox - 
+ 
+we suggest have job titles to the left, dates worked that job to the right and brief description of the job below the title. -->
 <section id="exp">
     <h2>Experience</h2>
-    <ul>
-        <li>
-        HTML
-        </li>
-        <li>
-           CSS
-            </li>
-            <li>
-               Javascript
-                </li>
-    </ul>
+
+    <div class="container" id="workExp">
+        
+        <div class="col">Bilingual Investigator & CSR - Butler County CSEA</div>
+        <div class="col">May 2024 - November 2024</div>
+        <div class="row">Monitored  activity on child support orders and reviewed case dictation to determine if enforcement was needed.</div>
+        
+
+        <div class="col">
+            Barista - Starbucks
+        </div>
+        <div class="col">February 2023 - May 2024</div>
+        <div class="row">Served 60+ customer orders during peak hours and processed payments in a timely and cheerful manner.  </div> 
+           </div> 
+    
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<ul>
+    <li></li>
+</ul>
 </section>
 
 <section id="connect">
 <h2>Connect</h2>
+<div id="social">
 <ul>
+    
+
+    
     <li>
-        <a href="linkedin.com/in/stephanie-cueto">Linkedin</a>
+        <a href="linkedin.com/in/stephanie-cueto" >Linkedin</a>
     </li>
     <li>
        <a href="https://github.com/sxcueto">Github</a>
     </li>
-</ul>
-</section>
 
+</ul>
+</div>
+</section>
+</div>
 </body>
 </html>
