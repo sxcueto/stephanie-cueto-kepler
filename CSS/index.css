@@ -41,7 +41,7 @@ p{
     
 }
 .col{
-flex-grow: 1 0 45%;
+flex: 1 0 45%;
 width: 50%;
 }
 
@@ -68,3 +68,4 @@ a:visited{
    color: #1b4481;
 }
 
+/* font family/ padding/ margins */
