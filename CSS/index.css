@@ -1,7 +1,13 @@
+
+
+
 body {
     background-color:#D3BEFB;
-    
+    font-family: "Roboto", sans-serif;
+  
+      
 }
+
 
 h1{
     padding-bottom: 80px;
@@ -41,7 +47,7 @@ p{
     
 }
 .col{
-flex-grow: 1 0 45%;
+flex: 1 0 45%;
 width: 50%;
 }
 
@@ -49,9 +55,6 @@ width: 50%;
     flex-basis: 100%;
     width: 25%;
 }
-
-
-
 
 
 /* connect section */
@@ -66,5 +69,49 @@ a:link{
 }
 a:visited{
    color: #1b4481;
+}
+
+
+
+/* mobile media query */
+@media only screen and (max-width: 600px) {
+    body{
+        margin: 1em;
+    }
+
+    h1{
+        padding-bottom: 0.5px;
+       font-size: 1.5rem;
+       text-align: center;
+    }
+
+    h2{
+        font-size: 1.3rem;
+}
+
+}
+
+/* tablet media query */
+@media only screen and (min-width: 600px) {
+    body{
+        margin: 2em;
+    }
+
+nav{
+    display: flex;
+    justify-content:space-between;
+    max-width: 70%;
+}
+
+h1{
+    padding-bottom: 0.5px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+h2{
+    font-size: 1.5rem;
+}
+
 }
 
