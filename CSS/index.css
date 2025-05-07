@@ -57,11 +57,18 @@ width: 50%;
 }
 
 
+/* skill section */
+#skills ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+}
+
 /* connect section */
 #social li{
     display: inline;
-    padding: 4px;
-   
+    padding: 2em;
 }
 
 a:link{
@@ -70,8 +77,19 @@ a:link{
 a:visited{
    color: #1b4481;
 }
+#connect{
+    margin-bottom: 3em;
+}
+/* footer */
 
-
+footer{
+    padding-top: 5rem;
+   position: relative;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: black;
+    text-align: center;
+}
 
 /* mobile media query */
 @media only screen and (max-width: 600px) {
@@ -88,13 +106,23 @@ a:visited{
     h2{
         font-size: 1.3rem;
 }
+#skills{
+    margin: 0.5em;
+}
+footer{
+    padding-top: 1em;
+}
+#connect ul {
+    padding: 0.3em;
+}
 
 }
 
 /* tablet media query */
 @media only screen and (min-width: 600px) {
     body{
-        margin: 2em;
+        margin: 0;
+        padding:0;
     }
 
 nav{
