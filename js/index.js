@@ -25,3 +25,21 @@ for (let i = 0; i < skills.length; i++) {
     skill.innerText = skills[i];
     skillsList.appendChild(skill);
 }
+
+
+//form section
+
+const messageForm = document.getElementById("leave_message").name;
+
+messageForm.addEventlistener("submit", (event) => {
+   
+   event.preventDefault(); 
+   event.target.usersName;
+    event.target.usersEmail;
+    event.target.usersMessage;
+    console.log(event);
+    const messageSection = document.querySelector('messages');
+    const messageList = document.querySelector
+    document.getElementById("leave_message").reset(); 
+ 
+});
