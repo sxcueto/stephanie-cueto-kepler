@@ -91,6 +91,40 @@ footer{
     text-align: center;
 }
 
+/* form */
+#form{
+   
+    text-align: center; 
+   box-sizing: border-box;
+}
+.form-box{
+    border: black solid 1px;
+    width: 25%;
+    margin: 0 auto;
+    
+}
+label, input {
+    margin-bottom: 10px;
+}
+
+label {
+     display: inline-block;
+     width: 75px;
+}
+
+#messages{
+    text-align: center;
+    
+}
+
+button {
+    margin: 1rem;
+}
+textarea {
+    resize: none;
+}
+
+
 /* mobile media query */
 @media only screen and (max-width: 600px) {
     body{
