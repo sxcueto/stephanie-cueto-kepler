@@ -61,7 +61,7 @@ removeButton.addEventListener("click", removeButton);
 
 let entry = document.getElementById('removeButton').parentNode.nodeName;
 
-remove(entry);
+// remove(entry);
 
 // reset form 
 // document.getElementById("leave_message").reset(); 
@@ -75,3 +75,32 @@ const messageForm = document.getElementsByName("leave_message");
 
 
 messageForm[0].addEventListener("submit", onFormSubmit); 
+
+// show projects from repository
+
+fetch('https://api.github.com/users/sxcueto/repos')
+
+.then((response) => {
+    if (!response.ok){
+        throw new error ("Request failed.");
+    }
+    return response.json();
+})
+
+.then((data) => {
+    console.log("data", data);
+    repositories = [...data];
+    console.log("respositories array = ", respositories);
+})
+
+
+const projectSection = document.getElementById("projects-section");
+const projectList = document.querySelector("ul");
+
+for (let i = 0; i < repositories.length; i++ ){
+
+    const project = document.createElement('li');
+    project.className = "repo-list";
+    projectList.appendChild(project);
+};
+
