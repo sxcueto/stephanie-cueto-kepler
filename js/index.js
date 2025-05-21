@@ -48,7 +48,7 @@ console.log(usersMessage);
     const messageSection = document.getElementById('messages');
     const messageList = messageSection.getElementsByTagName("ul");
     const newMessage = document.createElement("li");
-    newString = `<a href="mailto:${email}"<${userName}</a>;
+    newString = `<a href="mailto:${email}"<${userName}</a>
     <span> ${usersMessage} </span>`;
     
 //remove button
@@ -67,5 +67,5 @@ document.getElementById("form").reset();
 }
 
 //message form submit
-const messageForm = document.getElementByName("leave_message");
+const messageForm = document.getElementsByName("leave_message");
 messageForm[0].addEventListener("submit", onFormSubmit); 

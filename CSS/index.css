@@ -4,6 +4,8 @@
 body {
     background-color:#D3BEFB;
     font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
   
       
 }
@@ -28,6 +30,23 @@ h2 {
     margin: auto;
 }
 
+/* navbar */
+nav {
+    display: inline-block;
+   justify-content: center;
+   padding: 15px;
+   width: 50%;
+    margin: auto;
+
+}
+
+nav a{
+    width: 25%;
+   padding: 12px;
+   text-align: center;
+   float: none;
+
+}
 /* about section */
 
 p{
@@ -46,16 +65,25 @@ p{
     flex-direction: row;
     
 }
+/* job title and dates */
 .col{
 flex: 1 0 45%;
 width: 50%;
+font-weight: bold;
 }
 
+/* job description */
 .row{
     flex-basis: 100%;
     width: 25%;
+    padding: 10px 10px 20px 10px;
+    margin: auto;
 }
 
+/* projects section */
+#projects ul{
+    list-style: none;
+}
 
 /* skill section */
 #skills ul{
@@ -151,6 +179,18 @@ footer{
 }
 
 }
+
+nav {
+    display: block;
+    height: auto;
+    
+}
+
+.form-box{
+    width: 100%;
+}
+
+
 
 /* tablet media query */
 @media only screen and (min-width: 600px) {
