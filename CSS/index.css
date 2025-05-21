@@ -147,10 +147,16 @@ label, input, textarea, button {
     
 }
 
+#messages, ul {
+    list-style: none;
+}
+
 button {
-    margin-top: 1rem auto;
+    margin-top: 1rem;
+
     width: auto;
     display: block;
+    
 }
 textarea {
     resize: none;

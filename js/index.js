@@ -31,38 +31,38 @@ for (let i = 0; i < skills.length; i++) {
 //form section
 
 //callback for submit
-function onFormSubmit(event){
-     event.preventDefault(); 
+function onFormSubmit(event) {
+    event.preventDefault(); 
 
-const data = new FormData(event.target);
-const userName = data.get("usersName");
-const email = data.get("usersEmail");
-const usersMessage = data.get("usersMessage");
-    
+    const data = new FormData(event.target);
+    const userName = data.get("usersName");
+    const email = data.get("usersEmail");
+    const usersMessage = data.get("usersMessage");
 
-//displays messages below message section
-    const messageSection = document.getElementById('Messages');
+    // Displays messages below message section
+    const messageSection = document.getElementById('messages'); // Ensure this ID matches your HTML
     const messageList = messageSection.querySelector("ul");
 
-}
-//create message content
+    // Create message content
     const newMessage = document.createElement("li");
- newMessage.innerHTML = `<a href="mailto:${email}">${userName}</a>
- <span> ${usersMessage}</span>`;
+    newMessage.innerHTML = `<a href="mailto:${email}">${userName}</a>
+    <span> ${usersMessage}</span>`;
 
-//create the remove button
-const removeButton = document.createElement("button");
-removeButton.innerText = "Remove";
-//add event listenter to remove button
-removeButton.addEventListener("click", function(){
-    messageList.removeChild(newMessage);
-});
+    // Create the remove button
+    const removeButton = document.createElement("button");
+    removeButton.innerText = "Remove";
 
-newMessage.appendChild(removeButton);
-messageList.appendChild(newMessage);
+    // Add event listener to remove button
+    removeButton.addEventListener("click", function() {
+        messageList.removeChild(newMessage);
+    });
 
-event.target.reset();
+    newMessage.appendChild(removeButton);
+    messageList.appendChild(newMessage);
+
+    event.target.reset();
 }
+
 
 //message form submit
 
