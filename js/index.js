@@ -34,55 +34,48 @@ for (let i = 0; i < skills.length; i++) {
 function onFormSubmit(event){
      event.preventDefault(); 
 
-     const data = new FormData(event.target);
-     console.log(data);
+const data = new FormData(event.target);
 const userName = data.get("usersName");
-const email = data.get("email");
+const email = data.get("usersEmail");
 const usersMessage = data.get("usersMessage");
     
-console.log(userName);
-console.log(email);
-console.log(usersMessage);
 
 //displays messages below message section
-    const messageSection = document.getElementById('messages');
-    const messageList = messageSection.getElementsByTagName("ul");
+    const messageSection = document.getElementById('Messages');
+    const messageList = messageSection.querySelector("ul");
+
+}
+//create message content
     const newMessage = document.createElement("li");
+ newMessage.innerHTML = `<a href="mailto:${email}">${userName}</a>
+ <span> ${usersMessage}</span>`;
 
-    newString = `<a href="mailto:${email}"<${userName}</a>
-
-    <span> ${usersMessage} </span>`;
-    
-//remove button
+//create the remove button
 const removeButton = document.createElement("button");
 removeButton.innerText = "Remove";
-removeButton.setAttribute("button");
-removeButton.addEventListener("click", removeButton);
+//add event listenter to remove button
+removeButton.addEventListener("click", function(){
+    messageList.removeChild(newMessage);
+});
 
-let entry = document.getElementById('removeButton').parentNode.nodeName;
+newMessage.appendChild(removeButton);
+messageList.appendChild(newMessage);
 
-// remove(entry);
-
-// reset form 
-// document.getElementById("leave_message").reset(); 
-document.getElementById("form").reset();
+event.target.reset();
 }
 
 //message form submit
 
-const messageForm = document.getElementsByName("leave_message");
-
-
-
-messageForm[0].addEventListener("submit", onFormSubmit); 
+const messageForm = document.getElementsByName("leave_message")[0];
+messageForm.addEventListener("submit", onFormSubmit); 
 
 // show projects from repository
-
+let repositories = [];
 fetch('https://api.github.com/users/sxcueto/repos')
 
 .then((response) => {
     if (!response.ok){
-        throw new error ("Request failed.");
+        throw new Error ("Request failed.");
     }
     return response.json();
 })
@@ -90,17 +83,22 @@ fetch('https://api.github.com/users/sxcueto/repos')
 .then((data) => {
     console.log("data", data);
     repositories = [...data];
-    console.log("respositories array = ", respositories);
-})
+    console.log("respositories array = ", repositories);
+
 
 
 const projectSection = document.getElementById("projects-section");
-const projectList = document.querySelector("ul");
+const projectList = projectSection.querySelector('ul');
 
 for (let i = 0; i < repositories.length; i++ ){
 
     const project = document.createElement('li');
     project.className = "repo-list";
+    project.innerText = repositories[i].name;
     projectList.appendChild(project);
-};
+}
+})
+.catch((error) => {
+    console.error("Error fetching repositories:", error);
+})
 
