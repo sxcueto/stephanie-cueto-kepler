@@ -31,47 +31,74 @@ for (let i = 0; i < skills.length; i++) {
 //form section
 
 //callback for submit
-function onFormSubmit(event){
-     event.preventDefault(); 
+function onFormSubmit(event) {
+    event.preventDefault(); 
 
-     const data = new FormData(event.target);
-     console.log(data);
-const userName = data.get("usersName");
-const email = data.get("email");
-const usersMessage = data.get("usersMessage");
-    
-console.log(userName);
-console.log(email);
-console.log(usersMessage);
+    const data = new FormData(event.target);
+    const userName = data.get("usersName");
+    const email = data.get("usersEmail");
+    const usersMessage = data.get("usersMessage");
 
-//displays messages below message section
-    const messageSection = document.getElementById('messages');
-    const messageList = messageSection.getElementsByTagName("ul");
+    // Displays messages below message section
+    const messageSection = document.getElementById('messages'); // Ensure this ID matches your HTML
+    const messageList = messageSection.querySelector("ul");
+
+    // Create message content
     const newMessage = document.createElement("li");
+    newMessage.innerHTML = `<a href="mailto:${email}">${userName}</a>
+    <span> ${usersMessage}</span>`;
 
-    newString = `<a href="mailto:${email}"<${userName}</a>
+    // Create the remove button
+    const removeButton = document.createElement("button");
+    removeButton.innerText = "Remove";
 
-    <span> ${usersMessage} </span>`;
-    
-//remove button
-const removeButton = document.createElement("button");
-removeButton.innerText = "Remove";
-removeButton.setAttribute("button");
-removeButton.addEventListener("click", removeButton);
+    // Add event listener to remove button
+    removeButton.addEventListener("click", function() {
+        messageList.removeChild(newMessage);
+    });
 
-let entry = document.getElementById('removeButton').parentNode.nodeName;
+    newMessage.appendChild(removeButton);
+    messageList.appendChild(newMessage);
 
-remove(entry);
-
-// reset form 
-// document.getElementById("leave_message").reset(); 
-document.getElementById("form").reset();
+    event.target.reset();
 }
+
 
 //message form submit
 
-const messageForm = document.getElementsByName("leave_message");
+const messageForm = document.getElementsByName("leave_message")[0];
+messageForm.addEventListener("submit", onFormSubmit); 
+
+// show projects from repository
+let repositories = [];
+fetch('https://api.github.com/users/sxcueto/repos')
+
+.then((response) => {
+    if (!response.ok){
+        throw new Error ("Request failed.");
+    }
+    return response.json();
+})
+
+.then((data) => {
+    console.log("data", data);
+    repositories = [...data];
+    console.log("respositories array = ", repositories);
 
 
 
-messageForm[0].addEventListener("submit", onFormSubmit); 
+const projectSection = document.getElementById("projects-section");
+const projectList = projectSection.querySelector('ul');
+
+for (let i = 0; i < repositories.length; i++ ){
+
+    const project = document.createElement('li');
+    project.className = "repo-list";
+    project.innerText = repositories[i].name;
+    projectList.appendChild(project);
+}
+})
+.catch((error) => {
+    console.error("Error fetching repositories:", error);
+})
+
