@@ -44,6 +44,16 @@ function onFormSubmit(event) {
     const messageList = messageSection.querySelector("ul");
     messageSection.hidden = false;
     // Create message content
+    const data = new FormData(event.target);
+    const userName = data.get("usersName");
+    const email = data.get("usersEmail");
+    const usersMessage = data.get("usersMessage");
+
+    // Displays messages below message section
+    const messageSection = document.getElementById('messages'); // Ensure this ID matches your HTML
+    const messageList = messageSection.querySelector("ul");
+
+    // Create message content
     const newMessage = document.createElement("li");
     // *******************does newMessage logic need to be adjusted?***************************
     newMessage.innerHTML = `<a href="mailto:${email}">${userName}</a><span> ${usersMessage}</span>`;
