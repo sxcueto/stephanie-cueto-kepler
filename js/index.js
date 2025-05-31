@@ -1,4 +1,3 @@
-
 //add footer section to index
 const container = document.getElementById('myFooter');
 const addFooter = document.createElement('footer');
@@ -33,12 +32,6 @@ for (let i = 0; i < skills.length; i++) {
 //callback for submit
 function onFormSubmit(event) {
     event.preventDefault(); 
-
-    const data = new FormData(event.target);
-    const userName = data.get("usersName");
-    const email = data.get("usersEmail");
-    const usersMessage = data.get("usersMessage");
-
     // Displays messages below message section
     const messageSection = document.getElementById('messages'); 
     const messageList = messageSection.querySelector("ul");
@@ -48,11 +41,6 @@ function onFormSubmit(event) {
     const userName = data.get("usersName");
     const email = data.get("usersEmail");
     const usersMessage = data.get("usersMessage");
-
-    // Displays messages below message section
-    const messageSection = document.getElementById('messages'); // Ensure this ID matches your HTML
-    const messageList = messageSection.querySelector("ul");
-
     // Create message content
     const newMessage = document.createElement("li");
     // *******************does newMessage logic need to be adjusted?***************************
@@ -123,4 +111,3 @@ for (let i = 0; i < repositories.length; i++ ){
 }
 
 fetchRepos();
-
