@@ -1,5 +1,5 @@
 
-//footer section
+//add footer section to index
 const container = document.getElementById('myFooter');
 const addFooter = document.createElement('footer');
 container.appendChild(addFooter);
@@ -12,7 +12,7 @@ const d = new Date();
 
  //copyright
  const copyright = document.createElement('p');
-copyright.innerHTML =`Stephanie Cueto ${thisYear}`;
+copyright.innerHTML =`© Stephanie Cueto ${thisYear}`;
 
 footer.appendChild(copyright);
 
@@ -40,14 +40,15 @@ function onFormSubmit(event) {
     const usersMessage = data.get("usersMessage");
 
     // Displays messages below message section
-    const messageSection = document.getElementById('messages'); // Ensure this ID matches your HTML
+    const messageSection = document.getElementById('messages'); 
     const messageList = messageSection.querySelector("ul");
-
+    messageSection.hidden = false;
     // Create message content
     const newMessage = document.createElement("li");
-    newMessage.innerHTML = `<a href="mailto:${email}">${userName}</a>
-    <span> ${usersMessage}</span>`;
+    // *******************does newMessage logic need to be adjusted?***************************
+    newMessage.innerHTML = `<a href="mailto:${email}">${userName}</a><span> ${usersMessage}</span>`;
 
+    
     // Create the remove button
     const removeButton = document.createElement("button");
     removeButton.innerText = "Remove";
@@ -63,42 +64,53 @@ function onFormSubmit(event) {
     event.target.reset();
 }
 
+//hiddden message section
+const messageSection = document.getElementById("messages");
+messageSection.hidden = true;
+
 
 //message form submit
 
 const messageForm = document.getElementsByName("leave_message")[0];
 messageForm.addEventListener("submit", onFormSubmit); 
 
-// show projects from repository
+// grabbing projects from repository
 let repositories = [];
-fetch('https://api.github.com/users/sxcueto/repos')
 
-.then((response) => {
+async function fetchRepos(){
+try{
+    const response = await fetch ('https://api.github.com/users/sxcueto/repos');
+
     if (!response.ok){
         throw new Error ("Request failed.");
     }
-    return response.json();
-})
-
-.then((data) => {
+    const data = await response.json();
     console.log("data", data);
-    repositories = [...data];
+
+     repositories = [...data]; 
     console.log("respositories array = ", repositories);
+    addProjectsToSection();
+}catch (error){
+        console.error("Error:", error);
+    }
+}
 
 
 
+//adding projects to project section
+function addProjectsToSection(){
 const projectSection = document.getElementById("projects-section");
 const projectList = projectSection.querySelector('ul');
 
-for (let i = 0; i < repositories.length; i++ ){
 
+// going through projects
+for (let i = 0; i < repositories.length; i++ ){
     const project = document.createElement('li');
     project.className = "repo-list";
     project.innerText = repositories[i].name;
     projectList.appendChild(project);
 }
-})
-.catch((error) => {
-    console.error("Error fetching repositories:", error);
-})
+}
+
+fetchRepos();
 
